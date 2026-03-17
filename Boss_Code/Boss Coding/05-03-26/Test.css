@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  height: 100vh;
+}
+
+.row {
+  width: 100%;
+  height: 10%;
+  background-color: gray;
+  display: flex;
+}
+
+.row div {
+  width: 10%;
+  height: 100%;
+  border: 1px solid white;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.even div:nth-of-type(even) {
+  background-color: white;
+}
+
+.odd div:nth-of-type(odd) {
+  background-color: white;
+}
