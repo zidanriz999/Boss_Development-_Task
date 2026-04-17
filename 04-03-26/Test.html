@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Playback Coffee | The Sensory Sommelier</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#9b8e88",
+            "surface-variant": "#353535",
+            "tertiary": "#cbc6bd",
+            "on-error": "#690005",
+            "on-primary-fixed-variant": "#5d4201",
+            "surface-bright": "#393939",
+            "on-secondary-container": "#cbafa2",
+            "on-primary": "#412d00",
+            "surface": "#131313",
+            "surface-container-lowest": "#0e0e0e",
+            "on-error-container": "#ffdad6",
+            "on-surface-variant": "#d3c3bd",
+            "secondary": "#dec1b3",
+            "surface-container-high": "#2a2a2a",
+            "primary-fixed": "#ffdea5",
+            "on-secondary": "#3f2c23",
+            "inverse-on-surface": "#313030",
+            "primary-container": "#3e2b00",
+            "on-tertiary": "#32302a",
+            "inverse-surface": "#e5e2e1",
+            "primary-fixed-dim": "#e9c176",
+            "on-primary-container": "#b4904b",
+            "inverse-primary": "#775a19",
+            "surface-container-highest": "#353535",
+            "surface-tint": "#e9c176",
+            "on-tertiary-fixed-variant": "#494640",
+            "on-tertiary-container": "#99958d",
+            "outline-variant": "#4f4540",
+            "tertiary-container": "#302e28",
+            "on-primary-fixed": "#261900",
+            "secondary-fixed": "#fbdcce",
+            "surface-container-low": "#1c1b1b",
+            "surface-dim": "#131313",
+            "on-surface": "#e5e2e1",
+            "primary": "#e9c176",
+            "error-container": "#93000a",
+            "surface-container": "#20201f",
+            "background": "#131313",
+            "secondary-container": "#574238",
+            "tertiary-fixed-dim": "#cbc6bd",
+            "on-tertiary-fixed": "#1d1b16",
+            "error": "#ffb4ab",
+            "on-secondary-fixed": "#281810",
+            "secondary-fixed-dim": "#dec1b3",
+            "on-secondary-fixed-variant": "#574238",
+            "tertiary-fixed": "#e7e2d9",
+            "on-background": "#e5e2e1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Noto Serif"],
+            "body": ["Manrope"],
+            "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #131313;
+      color: #e5e2e1;
+      scroll-behavior: smooth;
+    }
+
+    .noto-serif {
+      font-family: 'Noto Serif', serif;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface antialiased overflow-x-hidden">
+  <!-- TopNavBar -->
+  <nav
+    class="fixed top-0 w-full z-50 bg-stone-950/70 backdrop-blur-xl shadow-2xl shadow-black/20 flex justify-between items-center px-12 py-6 max-w-full">
+    <div class="text-2xl font-serif tracking-tighter text-amber-200">
+      <span class="text-amber-200">Playback</span> <span class="text-on-surface">Coffee</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-amber-200 border-b-2 border-amber-200/50 pb-1 font-label text-xs uppercase tracking-widest transition-all duration-300"
+        href="#home">Home</a>
+      <a class="text-stone-400 hover:text-stone-100 transition-colors duration-500 font-label text-xs uppercase tracking-widest"
+        href="#menu">Menu</a>
+      <a class="text-stone-400 hover:text-stone-100 transition-colors duration-500 font-label text-xs uppercase tracking-widest"
+        href="#about">About</a>
+      <a class="text-stone-400 hover:text-stone-100 transition-colors duration-500 font-label text-xs uppercase tracking-widest"
+        href="#contact">Contact</a>
+    </div>
+    <div class="flex items-center gap-6">
+      <button
+        class="text-stone-400 hover:text-stone-100 transition-colors duration-500 font-label text-xs uppercase tracking-widest"
+        onclick="toggleModal('auth-modal')">Login</button>
+      <button
+        class="bg-primary text-on-primary px-6 py-2 rounded-md font-label text-xs uppercase tracking-widest font-bold hover:bg-primary-fixed transition-all duration-500 active:scale-95 shadow-lg shadow-primary/10"
+        onclick="toggleModal('auth-modal')">Sign Up</button>
+    </div>
+  </nav>
+  <!-- HOME SECTION (SCREEN_4 Content) -->
+  <header class="relative h-screen w-full flex items-center justify-center overflow-hidden" id="home">
+    <div class="absolute inset-0 z-0">
+      <img alt="Coffee pouring" class="w-full h-full object-cover opacity-60 scale-105"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrB2jwtwojvlPRsoY5YkauFwOI8aDfK8ZoaoqVJl9bQ7rD38Uoo7rEKs1RP_vsjvL9ZqUhuHs44MeB9cdabDnsNfGJI9DrBoMH0xbCQioRxiI4x37gbkKqEP8gkcX4YFmR0fFT9MMrjfED5ggZKKeFkDATGJBvjUhdQZYMwh0-tw5T38SXy_b2vUnH-n6YblwoqKqSLdwivn9GAL6WEHNAsjN8FhnI670_zqKUWELZmjWFKUmcjI3x4rNAmAlEEra59XiiakkWwBHp" />
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-stone-950/40 to-stone-950"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-4xl">
+      <span class="text-primary font-label text-sm uppercase tracking-[0.3em] mb-6 block">The Sensory Sommelier</span>
+      <h1 class="noto-serif text-6xl md:text-8xl font-bold text-on-surface tracking-tighter leading-tight mb-8">
+        Feel the Taste of <br /><span class="italic text-primary-fixed-dim">Real Coffee</span>
+      </h1>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
+        <a class="bg-primary text-on-primary px-10 py-4 rounded-md font-bold text-sm uppercase tracking-widest flex items-center gap-3 hover:bg-primary-fixed transition-all duration-500 group"
+          href="#menu">
+          Order Now
+          <span
+            class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+        <a class="bg-surface-container-highest text-primary px-10 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-surface-variant transition-all duration-500"
+          href="#menu">
+          View Menu
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- BENTO FEATURES (SCREEN_4 Content) -->
+  <section class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div class="md:col-span-8 group relative overflow-hidden rounded-xl h-[500px] bg-surface-container-low">
+        <img alt="Coffee Beans"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHeADu7-JhSJOWLarOd2Nba0BthdJaUwpXuKH7MT9kGPwIbEqDEM_gTE8oDnMhoC9D7k2NNku7Ji9xaoThD9-27iTlbLpu8sKEfrfr7FwFEHUgnhVj23IfFT8-rAZJ3nxYScrm1J7w9tu-LcMIfuIbtEV_zhlrSBB-K-Ah2tyjhEDRBdjQY-PvEyCOrrIVOU0CrmetxnxlgxmKxQ7k3jtSPJ0KYU6FePOrTDSBot5pejjD27fpsMt_nhPk2T04f0b2xq4bgMdQYJZn" />
+        <div class="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+          <span class="text-primary font-label text-xs uppercase tracking-widest mb-2">Our Foundation</span>
+          <h2 class="noto-serif text-4xl font-bold text-on-surface mb-4">Artisanal Selection</h2>
+          <p class="text-on-surface-variant max-w-md leading-relaxed">We source exclusively from high-altitude
+            micro-lots where the terroir speaks through every bean.</p>
+        </div>
+      </div>
+      <div class="md:col-span-4 grid grid-rows-2 gap-8">
+        <div class="bg-surface-container-high p-10 rounded-xl flex flex-col justify-center">
+          <span class="material-symbols-outlined text-primary text-4xl mb-6">temp_preferences_custom</span>
+          <h3 class="noto-serif text-2xl font-bold text-on-surface mb-2">Precision Roast</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Temperature-controlled profiling for absolute
+            flavor clarity.</p>
+        </div>
+        <div class="bg-surface-container-low p-10 rounded-xl flex flex-col justify-center">
+          <span class="material-symbols-outlined text-primary text-4xl mb-6">eco</span>
+          <h3 class="noto-serif text-2xl font-bold text-on-surface mb-2">Ethical Direct</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Sustainable partnerships that prioritize
+            farm-to-cup transparency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- MENU SECTION (SCREEN_5 Content) -->
+  <section class="py-32 bg-surface-container-low/30" id="menu">
+    <div class="max-w-7xl mx-auto px-12">
+      <header class="mb-16">
+        <span class="text-primary font-label text-sm uppercase tracking-[0.3em] mb-4 block">The Sensory Sommelier</span>
+        <h2 class="noto-serif text-6xl md:text-8xl tracking-tighter text-on-surface leading-none mb-12">Curated <span
+            class="italic font-normal">Selection</span></h2>
+        <div class="flex flex-wrap gap-4 items-center justify-start border-b border-outline-variant/10 pb-8">
+          <button
+            class="bg-primary text-on-primary px-8 py-3 rounded-full font-label text-xs uppercase tracking-widest font-bold shadow-xl shadow-primary/20">All
+            Brews</button>
+          <button
+            class="bg-surface-container-low text-on-surface-variant px-8 py-3 rounded-full font-label text-xs uppercase tracking-widest hover:bg-surface-container-high transition-colors">Espresso</button>
+          <button
+            class="bg-surface-container-low text-on-surface-variant px-8 py-3 rounded-full font-label text-xs uppercase tracking-widest hover:bg-surface-container-high transition-colors">Latte</button>
+          <button
+            class="bg-surface-container-low text-on-surface-variant px-8 py-3 rounded-full font-label text-xs uppercase tracking-widest hover:bg-surface-container-high transition-colors">Snacks</button>
+        </div>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Menu Item -->
+        <div
+          class="group relative bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all duration-500 ease-in-out border border-transparent hover:border-outline-variant/20">
+          <div class="aspect-square overflow-hidden rounded-lg mb-6 bg-surface-container-lowest">
+            <img alt="Velvet Espresso"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxyB4glYRFTKIb7I1WfchRkgL70pgeudInTn15VxhIPRfvm-Wwruc8YSl_s1o3jRFtgqWbG3XQV5XyH_xPk5Bxi1AM9qprPqtj9viDPWvN8IGXeqVUN3RPvR-BMi3MkXTvHJC5_hN3b13YK_j14rbkWzNrGJ2MKNcSUKj2BwedxuVgoJxX41UXjs_7mLy9-ly_LwdGdS5vLowK--PTFJdWU1xYuGuvBmXfY6LFMx_AqH2Gp9oySPK8LefYBuY3LS8oS6c33B87-NO" />
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="noto-serif text-2xl text-on-surface tracking-tight">Velvet Espresso</h3>
+            <span class="noto-serif text-xl text-primary">$4.50</span>
+          </div>
+          <p class="text-on-surface-variant text-sm font-light mb-8 leading-relaxed">Our signature dark roast with notes
+            of Venezuelan cacao and toasted walnut.</p>
+          <button
+            class="w-full bg-surface-container-highest text-primary py-4 rounded-md font-label text-xs uppercase tracking-widest font-bold group-hover:bg-primary group-hover:text-on-primary transition-all duration-500 flex items-center justify-center gap-2"
+            onclick="toggleModal('checkout-modal')">
+            Add to Cart <span class="material-symbols-outlined text-sm">shopping_bag</span>
+          </button>
+        </div>
+        <!-- More items truncated for brevity, same pattern... -->
+        <div
+          class="group relative bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all duration-500 ease-in-out border border-transparent hover:border-outline-variant/20">
+          <div class="aspect-square overflow-hidden rounded-lg mb-6 bg-surface-container-lowest">
+            <img alt="Bourbon Latte"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuARqfWb6z1em2lmK3r3YltD2x5YYNhZNO0Pjw2AgCg5WqfLcCD5rTcuO6mtUoTCSUVsBCfqtk7XZtnSes0gbDkD6djja8BcTS3X-4Na8Di8Rxqp2Vf1YiOz3I3AF6mz5yEdImZLsijvYSxMvtTKeQAwzCbPeKTm_LEata0jaE4vnBc4jiRPdDPOlEDBr77qQWHtxY2fXX9qbYxIES8r0DwR5bw6J-YBZanx_-xfliq4a6u9rh4gM5IZ4WXFX_YxpBxalJDiZeYhF4zD" />
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="noto-serif text-2xl text-on-surface tracking-tight">Bourbon Latte</h3>
+            <span class="noto-serif text-xl text-primary">$6.25</span>
+          </div>
+          <p class="text-on-surface-variant text-sm font-light mb-8 leading-relaxed">Infused with Madagascar vanilla
+            bean and delicate smoked cinnamon.</p>
+          <button
+            class="w-full bg-surface-container-highest text-primary py-4 rounded-md font-label text-xs uppercase tracking-widest font-bold group-hover:bg-primary group-hover:text-on-primary transition-all duration-500 flex items-center justify-center gap-2"
+            onclick="toggleModal('checkout-modal')">
+            Add to Cart <span class="material-symbols-outlined text-sm">shopping_bag</span>
+          </button>
+        </div>
+        <div
+          class="group relative bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all duration-500 ease-in-out border border-transparent hover:border-outline-variant/20">
+          <div class="aspect-square overflow-hidden rounded-lg mb-6 bg-surface-container-lowest">
+            <img alt="Croissant"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuACXukTuUqd2ch-1JkJyyzjcEF58_kDftcJ9QZYAZqMJ5Zs8FdjFbwkGSJfeoXS0FwsLzRXkIxawVp1nyboqZU3Y4198VgwO0IPjfqbepRcoGWCt8C91u7UEPHk345E1n_B2Na3VGsjQP1gmb_X-6shcPGcYx7mhmTVC2FFsLpBcZnbcJNG9S_qm21Ag5C8RnLsr9VVlv-tVQROja6B_W9g48TYhFTY_97ea137dJJktqUZJKvpqaTPCgmh-QgxzXZ8U6ibzMR0SPTH" />
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="noto-serif text-2xl text-on-surface tracking-tight">Salted Croissant</h3>
+            <span class="noto-serif text-xl text-primary">$4.75</span>
+          </div>
+          <p class="text-on-surface-variant text-sm font-light mb-8 leading-relaxed">Triple-laminated pastry baked fresh
+            daily with organic Breton butter.</p>
+          <button
+            class="w-full bg-surface-container-highest text-primary py-4 rounded-md font-label text-xs uppercase tracking-widest font-bold group-hover:bg-primary group-hover:text-on-primary transition-all duration-500 flex items-center justify-center gap-2"
+            onclick="toggleModal('checkout-modal')">
+            Add to Cart <span class="material-symbols-outlined text-sm">shopping_bag</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ABOUT SECTION (SCREEN_7 Content) -->
+  <section class="py-32 bg-surface" id="about">
+    <div class="max-w-7xl mx-auto px-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+        <div class="md:col-span-5 relative">
+          <div class="aspect-[4/5] overflow-hidden rounded-xl">
+            <img alt="Roasting Process" class="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkGDe1XuR73xdEUCcJBc2xZYa0KXCFYPz4XMTYxOYcjZTuOJ-DZPJtuBQ6CuHMRzuS8T4YvqhhR8kK7IOqxz0JO7uZHgfjs9q5yMCE8C9MEyXt4jma8UasV-P_o6FtYa7u8NjfAbdudw0GLMD-Gmc3qWkOSbyyIvmI4KebEZbW27WSXeH65SzAqhAUo8QzXbRzhD7sXtBbRteMSxiYBO-ocRisnbKDn67mH8s0i3WFOBAb-RNRCebcMW_aGkd66iLh2cZbu3gwOuVo" />
+          </div>
+          <div
+            class="absolute -bottom-8 -right-8 w-64 h-64 border border-outline-variant/20 rounded-xl -z-10 bg-surface-container-low">
+          </div>
+        </div>
+        <div class="md:col-span-7">
+          <span class="text-primary font-label text-sm uppercase tracking-[0.4em] mb-4 block">Our Elements</span>
+          <h2 class="noto-serif text-5xl font-bold mb-10 leading-tight">The Alchemical <br />Transition.</h2>
+          <div class="space-y-8 text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+            <p>Founded in the quiet hours of a rainy autumn dusk, Playback Coffee began with a singular obsession: the
+              resonance of flavor. We believe that roasting is not just a process, but a performance.</p>
+            <p>Our master roasters treat every batch like a master recording. We listen for the first crack, monitor the
+              aromatic development, and pull the beans at the precise moment their terroir finds its highest expression.
+            </p>
+          </div>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-outline-variant/10">
+            <div>
+              <span class="material-symbols-outlined text-primary mb-4">temp_preferences_custom</span>
+              <h4 class="font-bold text-on-surface">Thermal</h4>
+            </div>
+            <div>
+              <span class="material-symbols-outlined text-primary mb-4">eco</span>
+              <h4 class="font-bold text-on-surface">Direct</h4>
+            </div>
+            <div>
+              <span class="material-symbols-outlined text-primary mb-4">filter_vintage</span>
+              <h4 class="font-bold text-on-surface">The Bloom</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CONTACT SECTION (SCREEN_8 Content) -->
+  <section class="py-32 bg-surface-container-low/20" id="contact">
+    <div class="max-w-7xl mx-auto px-12">
+      <div class="mb-20">
+        <span class="text-primary font-label text-sm uppercase tracking-[0.3em] block mb-4">Connect With Us</span>
+        <h2 class="noto-serif text-6xl md:text-8xl font-bold text-on-surface tracking-tighter leading-none">The Dialogue
+          of <span class="italic text-primary-fixed-dim">Flavor.</span></h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-7 bg-surface-container-low p-12 rounded-xl">
+          <h3 class="noto-serif text-3xl mb-10">Send an Inquiry</h3>
+          <form class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-2">
+                <label class="text-[11px] uppercase tracking-widest text-primary font-bold">Full Name</label>
+                <input
+                  class="w-full bg-surface-container-lowest border-none border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-4 px-0 transition-all placeholder:text-surface-variant"
+                  placeholder="John Doe" type="text" />
+              </div>
+              <div class="space-y-2">
+                <label class="text-[11px] uppercase tracking-widest text-primary font-bold">Email Address</label>
+                <input
+                  class="w-full bg-surface-container-lowest border-none border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-4 px-0 transition-all placeholder:text-surface-variant"
+                  placeholder="hello@playback.com" type="email" />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="text-[11px] uppercase tracking-widest text-primary font-bold">Your Message</label>
+              <textarea
+                class="w-full bg-surface-container-lowest border-none border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-4 px-0 transition-all placeholder:text-surface-variant resize-none"
+                placeholder="Share your thoughts with us..." rows="4"></textarea>
+            </div>
+            <button
+              class="bg-gradient-to-tr from-primary to-primary-fixed-dim text-on-primary px-10 py-4 rounded-md font-bold uppercase tracking-widest text-xs hover:shadow-xl transition-all duration-500">Dispatch
+              Message</button>
+          </form>
+        </div>
+        <div class="lg:col-span-5 space-y-12">
+          <div class="bg-surface-container-high rounded-xl overflow-hidden h-[400px] relative shadow-2xl">
+            <img alt="Map Location" class="w-full h-full object-cover grayscale brightness-50"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGHuJnGahWG64ucZ6r06SNq3iq-p-exC2P05rZfmsybDP6ev33q6duaJI4Hz1tYw4pKwURrGvq2LijN923YhP6zLOFK6GHZgtD8osmUjXDw4PQP8rj1Lyz8QkhwXQCyWax3dfSA_UQls1qkU0j5HfUJgrRbYroLkUFu1QEDumNzhgIDOw0bj9JWzrN4VEAg_sF1upEGxPq4KsD0MudYQcwu-NcXh49ZXf7Eh3ljfSGzusHLAdms2wLtspGPpjG8PRF-ZjUx9eVeFsJ" />
+            <div
+              class="absolute bottom-6 left-6 right-6 p-6 bg-surface-container-highest/80 backdrop-blur-md rounded-lg">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-primary block mb-2">Our Sanctuary</span>
+              <h3 class="text-xl noto-serif text-on-surface">Aoyama, Tokyo</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer (SCREEN_4 Version) -->
+  <footer class="bg-stone-950">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
+      <div class="space-y-6">
+        <div class="text-xl noto-serif text-amber-200 italic"><span class="text-amber-200">Playback</span> <span
+            class="text-stone-500">Coffee.</span></div>
+        <p class="text-stone-500 text-sm leading-relaxed">Elevating the daily ritual into an editorial experience of
+          taste and sound.</p>
+      </div>
+      <div>
+        <h4 class="noto-serif text-amber-200 font-bold uppercase text-xs tracking-widest mb-6">Navigation</h4>
+        <ul class="space-y-4">
+          <li><a class="text-stone-500 hover:text-amber-100 transition-all text-sm" href="#home">Home</a></li>
+          <li><a class="text-stone-500 hover:text-amber-100 transition-all text-sm" href="#menu">Menu</a></li>
+          <li><a class="text-stone-500 hover:text-amber-100 transition-all text-sm" href="#about">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="noto-serif text-amber-200 font-bold uppercase text-xs tracking-widest mb-6">Legal</h4>
+        <ul class="space-y-4 text-stone-500 text-sm">
+          <li><a class="hover:text-amber-100" href="#">Privacy Policy</a></li>
+          <li><a class="hover:text-amber-100" href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="noto-serif text-amber-200 font-bold uppercase text-xs tracking-widest mb-6">Connect</h4>
+        <ul class="space-y-4 text-stone-500 text-sm">
+          <li><a class="hover:text-amber-100" href="#contact">Contact Us</a></li>
+          <li><a class="hover:text-amber-100" href="#">Locations</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/5 py-8 px-12 max-w-7xl mx-auto flex justify-between items-center">
+      <div class="text-stone-600 text-[10px] uppercase tracking-widest">© 2024 Playback Coffee. The Sensory Sommelier.
+      </div>
+      <div class="flex gap-8 text-stone-600 text-[10px] uppercase tracking-widest">
+        <span>New York</span> <span>Tokyo</span> <span>London</span>
+      </div>
+    </div>
+  </footer>
+  <!-- AUTH MODAL (SCREEN_2 Integration) -->
+  <div class="fixed inset-0 z-[100] modal-backdrop hidden flex items-center justify-center p-6" id="auth-modal">
+    <div
+      class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 bg-surface-container-low rounded-xl overflow-hidden shadow-2xl border border-outline-variant/10 relative">
+      <button class="absolute top-6 right-6 z-20 text-stone-500 hover:text-white transition-colors"
+        onclick="toggleModal('auth-modal')">
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+      <div class="hidden lg:block relative min-h-[600px]">
+        <img alt="Artisan coffee" class="absolute inset-0 w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhaR5vhHiUuem5bJi63cvI7c7PVXJe-yVuvPhXg6_DqPZ6IgXm932Fu9QbblB4oZERdSyhFd-Oov1e_zKOXM38dxSBV0FPESalR0PcXxUpguOxi0kxK6WViedpnC3CA7ctvMzRL9p0iteyeO72Prc7NvqHq50hT7Bxfh18et3WrWHBMALEb5S5QE_1UNPb7KqkraPniRM8AmDiRvZ0d0oSebSp2E5fezU3kWqA63HvKioVySBKQVgpD46zW4aUA30SdyAFtFmkrNuH" />
+        <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-80"></div>
+        <div class="absolute bottom-12 left-12 right-12">
+          <span class="text-primary font-label text-[10px] tracking-[0.3em] uppercase mb-4 block">The Sensory
+            Sommelier</span>
+          <h2 class="text-4xl noto-serif text-on-surface leading-tight tracking-tight">Experience coffee <br />as a
+            ritual.</h2>
+        </div>
+      </div>
+      <div class="p-12 md:p-16 flex flex-col justify-center">
+        <div class="mb-12">
+          <h1 class="text-4xl noto-serif text-on-surface mb-2">Welcome Back</h1>
+          <p class="text-on-surface-variant text-sm">Please enter your details to access your private cellar.</p>
+        </div>
+        <form class="space-y-8">
+          <div class="space-y-6">
+            <div class="relative group">
+              <label
+                class="block text-[10px] font-label uppercase tracking-widest text-primary mb-2 transition-colors">Email
+                Address</label>
+              <input
+                class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 py-3 px-0 focus:ring-0 focus:border-primary text-on-surface placeholder:text-stone-600 transition-all"
+                placeholder="sommelier@playback.coffee" type="email" />
+            </div>
+            <div class="relative group">
+              <div class="flex justify-between items-end mb-2">
+                <label class="text-[10px] font-label uppercase tracking-widest text-primary">Password</label>
+                <a class="text-[9px] font-label uppercase tracking-widest text-stone-500 hover:text-primary transition-colors"
+                  href="#">Forgot?</a>
+              </div>
+              <input
+                class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 py-3 px-0 focus:ring-0 focus:border-primary text-on-surface placeholder:text-stone-600 transition-all"
+                placeholder="••••••••" type="password" />
+            </div>
+          </div>
+          <button
+            class="w-full py-4 bg-gradient-to-br from-primary to-primary-fixed-dim text-on-primary font-label text-xs tracking-[0.2em] uppercase rounded-lg hover:translate-y-[-2px] hover:shadow-xl transition-all duration-500">Sign
+            In</button>
+        </form>
+        <div class="mt-12 text-center text-sm text-on-surface-variant">
+          New to the brew? <a class="text-primary hover:text-primary-fixed ml-1 underline underline-offset-4"
+            href="#">Create an account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- CHECKOUT MODAL (SCREEN_9 Integration) -->
+  <div class="fixed inset-0 z-[100] modal-backdrop hidden flex items-center justify-center p-6 overflow-y-auto"
+    id="checkout-modal">
+    <div
+      class="w-full max-w-5xl bg-surface-container-low rounded-xl p-8 md:p-16 relative shadow-2xl border border-white/5 my-auto">
+      <button class="absolute top-8 right-8 text-stone-500 hover:text-white transition-colors"
+        onclick="toggleModal('checkout-modal')">
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+      <div class="mb-12">
+        <span class="text-primary font-label text-sm uppercase tracking-[0.2em] mb-2 block">Secure Checkout</span>
+        <h2 class="text-4xl md:text-5xl noto-serif font-bold text-on-surface tracking-tighter">Your Curated Selection.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div class="space-y-10">
+          <div class="flex gap-6 p-4 rounded-xl bg-surface-container-lowest/50 border border-white/5">
+            <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+              <img alt="Item" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxyB4glYRFTKIb7I1WfchRkgL70pgeudInTn15VxhIPRfvm-Wwruc8YSl_s1o3jRFtgqWbG3XQV5XyH_xPk5Bxi1AM9qprPqtj9viDPWvN8IGXeqVUN3RPvR-BMi3MkXTvHJC5_hN3b13YK_j14rbkWzNrGJ2MKNcSUKj2BwedxuVgoJxX41UXjs_7mLy9-ly_LwdGdS5vLowK--PTFJdWU1xYuGuvBmXfY6LFMx_AqH2Gp9oySPK8LefYBuY3LS8oS6c33B87-NO" />
+            </div>
+            <div class="flex-grow flex flex-col justify-center">
+              <h4 class="noto-serif text-lg">Velvet Espresso</h4>
+              <p class="text-primary font-bold mt-1">$4.50</p>
+            </div>
+          </div>
+          <form class="space-y-6">
+            <input
+              class="w-full bg-surface-container-lowest border-none py-4 px-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-on-surface placeholder:text-outline/50 noto-serif italic text-lg"
+              placeholder="Delivery Address" type="text" />
+            <button
+              class="w-full bg-primary text-on-primary py-5 rounded-md font-bold uppercase tracking-widest text-xs hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
+              type="button">Complete Payment</button>
+          </form>
+        </div>
+        <div class="bg-surface-container-high rounded-2xl p-8 shadow-xl">
+          <h3 class="noto-serif text-2xl mb-6 italic">Summary</h3>
+          <div class="space-y-4 mb-6 text-sm text-outline">
+            <div class="flex justify-between"><span>Subtotal</span><span class="text-on-surface">$4.50</span></div>
+            <div class="flex justify-between"><span>Delivery</span><span class="text-on-surface">$2.00</span></div>
+            <div class="pt-4 border-t border-outline-variant/20 flex justify-between items-end">
+              <span class="text-lg noto-serif">Total</span>
+              <span class="text-3xl noto-serif text-primary font-bold">$6.50</span>
+            </div>
+          </div>
+          <div class="p-4 bg-primary/5 rounded-lg border border-primary/20 flex gap-4 items-center">
+            <span class="material-symbols-outlined text-primary">eco</span>
+            <p class="text-[10px] text-outline leading-tight">Your purchase supports fair-trade cooperatives. Every bean
+              is traceable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
+</body>
+
+</html>

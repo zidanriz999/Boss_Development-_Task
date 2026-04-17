@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500&amp;family=Manrope:wght@500;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#3d2e00",
+            "on-tertiary": "#372f27",
+            "surface-variant": "#3d3232",
+            "on-secondary-container": "#c2b6b3",
+            "on-surface": "#f1dede",
+            "outline-variant": "#4c4638",
+            "inverse-surface": "#f1dede",
+            "on-tertiary-container": "#584f47",
+            "secondary-fixed": "#ede0dc",
+            "primary": "#ffdd87",
+            "surface-dim": "#1a1111",
+            "on-background": "#f1dede",
+            "inverse-primary": "#735b11",
+            "on-tertiary-fixed": "#211a13",
+            "secondary-fixed-dim": "#d0c4c0",
+            "on-error": "#690005",
+            "surface-container-high": "#322727",
+            "secondary-container": "#504745",
+            "on-secondary": "#362f2d",
+            "tertiary": "#ecded2",
+            "surface-container-lowest": "#140c0c",
+            "surface-container": "#271d1d",
+            "primary-container": "#e1c16e",
+            "primary-fixed": "#ffdf91",
+            "on-error-container": "#ffdad6",
+            "secondary": "#d0c4c0",
+            "on-primary-fixed-variant": "#584400",
+            "on-secondary-fixed-variant": "#4d4543",
+            "tertiary-fixed-dim": "#d1c4b9",
+            "tertiary-container": "#cfc2b7",
+            "surface-tint": "#e3c370",
+            "inverse-on-surface": "#392e2e",
+            "on-tertiary-fixed-variant": "#4e453d",
+            "outline": "#98907f",
+            "error-container": "#93000a",
+            "on-surface-variant": "#cfc5b3",
+            "on-secondary-fixed": "#211a18",
+            "primary-fixed-dim": "#e3c370",
+            "surface-bright": "#423636",
+            "surface-container-low": "#231919",
+            "surface": "#1a1111",
+            "surface-container-highest": "#3d3232",
+            "on-primary-fixed": "#241a00",
+            "tertiary-fixed": "#eee0d4",
+            "background": "#1a1111",
+            "error": "#ffb4ab",
+            "on-primary-container": "#654e02"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Noto Serif"],
+            "body": ["Inter"],
+            "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      background-color: #1a1111;
+      color: #f1dede;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-serif {
+      font-family: 'Noto Serif', serif;
+    }
+
+    .font-sans {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-label {
+      font-family: 'Manrope', sans-serif;
+    }
+  </style>
+</head>
+<title>PlayBack Coffee Time</title>
+
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+  <!-- TopNavBar -->
+  <nav
+    class="fixed top-0 w-full z-50 bg-neutral-950/70 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-neutral-950/40 flex justify-between items-center px-8 py-4 max-w-full">
+    <div class="text-2xl font-serif italic text-amber-200 tracking-tight">ZIDAN</div>
+    <div class="hidden md:flex items-center space-x-8">
+      <a class="text-amber-200 font-bold border-b-2 border-amber-200 pb-1 font-label" href="#">Shop</a>
+      <a class="text-neutral-400 font-medium hover:text-amber-100 transition-colors font-label" href="#">Our Story</a>
+      <a class="text-neutral-400 font-medium hover:text-amber-100 transition-colors font-label" href="#">Locations</a>
+    </div>
+    <div class="flex items-center space-x-6">
+      <button class="text-amber-200 hover:bg-white/5 p-2 rounded-full transition-all duration-300">
+        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+      </button>
+      <button class="md:hidden text-amber-200">
+        <span class="material-symbols-outlined" data-icon="menu">menu</span>
+      </button>
+    </div>
+  </nav>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img alt="Brew &amp; Gold Experience" class="w-full h-full object-cover brightness-[0.4] scale-105"
+          data-alt="Cinematic close-up of steam rising from a freshly poured latte in a dark ceramic cup, warm morning light, moody espresso tones"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7L5fQbOLzhoeqxRYXRQCYNyTmlS7DtKmcie90UYiCKV0WrBnnyY7TzLMS6h520vgj7JoouAIJCnQtyioUTrTRFvZaU9kkEIT4pgCiw5ja1MxQ5ybXxGfGpwFroL4eaijFYsI82FdvRAeapqmtm5uGNerYldQ9Bb2c_quWXVdLhkIw3_EJ6hDqO8lcedWk8zrdinKUDiqYmcJoDOT4pomflECWY56uWiqESkbNVj5v27aqIPGMSEhAx8rUo2FA7Uo0WfhbUyzIqY4" />
+        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+      </div>
+      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-8xl font-serif text-on-surface leading-tight mb-8 tracking-tight">
+          The Art of <span class="italic text-primary">Pure</span> Extraction
+        </h1>
+        <p class="text-lg md:text-xl text-on-surface-variant font-sans max-w-2xl mx-auto mb-10 leading-relaxed">
+          Experience the golden standard of specialty coffee. Sourced from volcanic peaks, roasted to perfection,
+          delivered to your doorstep.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            class="bg-primary-container text-on-primary-container font-label py-5 px-10 rounded-full text-lg font-bold shadow-xl shadow-primary-container/10 hover:scale-105 transition-transform">
+            Order Now
+          </button>
+          <button
+            class="border border-outline/30 text-on-surface font-label py-5 px-10 rounded-full text-lg font-medium backdrop-blur-md hover:bg-white/5 transition-all">
+            Explore Blends
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Product Grid -->
+    <section class="py-32 px-8 bg-surface">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div>
+            <span class="font-label uppercase tracking-widest text-primary text-sm mb-4 block">Curated Collection</span>
+            <h2 class="text-4xl md:text-6xl font-serif text-on-surface">Signature Brews</h2>
+          </div>
+          <p class="text-on-surface-variant font-sans max-w-sm">Hand-selected beans processed with artisanal techniques
+            for a complex, lingering finish.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Product Card 1 -->
+          <div
+            class="group relative bg-surface-container-high rounded-lg overflow-hidden transition-all duration-500 hover:bg-surface-container-highest">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img alt="Midnight Roast"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Minimalist matte black coffee bag with elegant gold foil typography sitting on a dark marble slab, soft directional lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9bJMrAr8JgKvb9MHNwKIv_PuWnWAnFIf2b6MGZ1LiNqXxa4r4gl75Ke-LCBtreZiMHZl36d9CtCINdxHpLQeKUt4ndYycr_ynZKsp772C_WBd-h7O0oKEbf3hf3gVc1XJATZ7dqFMoQ9fqEHxgxSWYZQiF3uJ9WFm23Yhw_wH_1IpVZbuXpSLfk7q6KpHhIZFCWQezkY2ofmRRcBSVreFBcMa6aHPKgTPD0p073xJK3eaHdqsFQRGTmxWAlO9omQlao4Z-oiJHYE" />
+            </div>
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-serif text-on-surface">Midnight Velvet</h3>
+                <span class="text-primary font-serif">$28.00</span>
+              </div>
+              <p class="text-sm text-on-surface-variant font-sans mb-6">Dark roast with notes of smoked cacao and black
+                cherry.</p>
+              <button
+                class="w-full py-4 bg-primary-container text-on-primary-container rounded-full font-label font-bold opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <!-- Product Card 2 -->
+          <div
+            class="group relative bg-surface-container-high rounded-lg overflow-hidden transition-all duration-500 hover:bg-surface-container-highest">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img alt="The Glass Cup"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Modern double-walled glass coffee mug with a perfectly poured espresso crema top, bright airy luxury kitchen background"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFk48v07ZUrdEh1A4sfH50yUhQ5c9RQ6sGhPYwG20VSVCxN3ri720yE1IImPUfDVLCvm163ZzBius22csl18xmPFIdcjZI4g8vjYicbLZQPztLU3CnIYE9qCjG08eqyWs2bbBSWZKNWV9Rc2SsWBpfbf9pMt4ocDkYSOrwL5VdT51KeeRyWcWMM-N0OHyL1BVyzaH5u39hjOTtzFlC2GMkNL2Wj_8e74ReLdeBgxpny5xPYe96WwRF8PaSsFhKB-o3Jwq_WiROzPM" />
+            </div>
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-serif text-on-surface">Gilded Tumbler</h3>
+                <span class="text-primary font-serif">$42.00</span>
+              </div>
+              <p class="text-sm text-on-surface-variant font-sans mb-6">Double-walled borosilicate glass with 24k gold
+                rim.</p>
+              <button
+                class="w-full py-4 bg-primary-container text-on-primary-container rounded-full font-label font-bold opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <!-- Product Card 3 -->
+          <div
+            class="group relative bg-surface-container-high rounded-lg overflow-hidden transition-all duration-500 hover:bg-surface-container-highest">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img alt="Sunrise Blend"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Bag of light roast coffee beans on a wooden table next to fresh jasmine flowers, warm soft focus background"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9bJMrAr8JgKvb9MHNwKIv_PuWnWAnFIf2b6MGZ1LiNqXxa4r4gl75Ke-LCBtreZiMHZl36d9CtCINdxHpLQeKUt4ndYycr_ynZKsp772C_WBd-h7O0oKEbf3hf3gVc1XJATZ7dqFMoQ9fqEHxgxSWYZQiF3uJ9WFm23Yhw_wH_1IpVZbuXpSLfk7q6KpHhIZFCWQezkY2ofmRRcBSVreFBcMa6aHPKgTPD0p073xJK3eaHdqsFQRGTmxWAlO9omQlao4Z-oiJHYE" />
+            </div>
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-serif text-on-surface">Morning Ether</h3>
+                <span class="text-primary font-serif">$32.00</span>
+              </div>
+              <p class="text-sm text-on-surface-variant font-sans mb-6">Light roast with floral jasmine and citrus
+                undertones.</p>
+              <button
+                class="w-full py-4 bg-primary-container text-on-primary-container rounded-full font-label font-bold opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Customization Panel -->
+    <section class="py-24 px-8 bg-surface-container-low">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        <div class="lg:w-1/2">
+          <h2 class="text-4xl md:text-6xl font-serif text-on-surface mb-8">Personalize Your Ritual</h2>
+          <p class="text-on-surface-variant font-sans text-lg mb-12 leading-relaxed">
+            Every cup is a unique journey. Fine-tune your extraction with our customizable subscription profile. We'll
+            calibrate our roasting profile to match your preferences.
+          </p>
+          <div class="flex items-center gap-8 border-l-2 border-primary/20 pl-8">
+            <div>
+              <p class="text-3xl font-serif text-primary">100%</p>
+              <p class="text-sm font-label uppercase tracking-widest text-on-surface-variant">Traceable</p>
+            </div>
+            <div>
+              <p class="text-3xl font-serif text-primary">Micro</p>
+              <p class="text-sm font-label uppercase tracking-widest text-on-surface-variant">Lot Sourcing</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:w-1/2 w-full">
+          <div class="bg-surface-container-highest p-10 md:p-12 rounded-xl shadow-2xl">
+            <div class="space-y-12">
+              <!-- Milk Selection -->
+              <div>
+                <label class="block font-label uppercase tracking-widest text-xs text-on-surface-variant mb-6">Preferred
+                  Milk Base</label>
+                <div class="grid grid-cols-3 gap-4 bg-surface-container-low p-2 rounded-full">
+                  <button
+                    class="py-3 px-4 bg-primary-container text-on-primary-container rounded-full font-label text-sm font-bold shadow-lg">Almond</button>
+                  <button
+                    class="py-3 px-4 text-on-surface-variant hover:text-on-surface rounded-full font-label text-sm font-medium transition-colors">Oat</button>
+                  <button
+                    class="py-3 px-4 text-on-surface-variant hover:text-on-surface rounded-full font-label text-sm font-medium transition-colors">Soy</button>
+                </div>
+              </div>
+              <!-- Sugar Level -->
+              <div>
+                <div class="flex justify-between items-center mb-6">
+                  <label class="block font-label uppercase tracking-widest text-xs text-on-surface-variant">Sweetness
+                    Level</label>
+                  <span class="text-primary font-label text-sm">Balanced</span>
+                </div>
+                <div class="relative h-2 bg-surface-container-low rounded-full">
+                  <div class="absolute left-0 top-0 h-full w-1/2 bg-primary rounded-full"></div>
+                  <div
+                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-primary-fixed rounded-full shadow-lg cursor-pointer ring-4 ring-primary-container/20">
+                  </div>
+                </div>
+                <div class="flex justify-between mt-4 text-[10px] font-label uppercase text-outline tracking-tighter">
+                  <span>None</span>
+                  <span>Subtle</span>
+                  <span>Rich</span>
+                </div>
+              </div>
+              <!-- Roast Preference Toggle -->
+              <div class="flex items-center justify-between py-6 border-t border-outline/10">
+                <div>
+                  <p class="font-label text-on-surface font-bold">Eco-Friendly Packaging</p>
+                  <p class="text-xs text-on-surface-variant">Compostable bags and labels</p>
+                </div>
+                <div class="w-14 h-8 bg-primary/20 rounded-full relative p-1 cursor-pointer">
+                  <div class="w-6 h-6 bg-primary rounded-full absolute right-1 shadow-sm"></div>
+                </div>
+              </div>
+              <button
+                class="w-full py-6 bg-on-surface text-surface font-label font-extrabold rounded-full uppercase tracking-[0.2em] hover:bg-primary transition-colors">
+                Save Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-neutral-900 w-full rounded-t-[48px] py-20">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+      <div class="md:col-span-1">
+        <span class="text-3xl font-serif italic text-amber-200 mb-6 block">Gilded Crema</span>
+        <p class="text-neutral-500 font-sans text-sm leading-relaxed">Defining the future of coffee through historical
+          roasting traditions and modern digital accessibility.</p>
+      </div>
+      <div class="md:col-span-1">
+        <h4 class="font-label uppercase tracking-widest text-xs text-amber-200 mb-6">Menu</h4>
+        <ul class="space-y-4">
+          <li><a class="text-neutral-500 hover:text-neutral-300 font-sans text-sm transition-colors duration-200"
+              href="#">Shop All</a></li>
+          <li><a class="text-neutral-500 hover:text-neutral-300 font-sans text-sm transition-colors duration-200"
+              href="#">Wholesale</a></li>
+          <li><a class="text-neutral-500 hover:text-neutral-300 font-sans text-sm transition-colors duration-200"
+              href="#">Brewing Guides</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-1">
+        <h4 class="font-label uppercase tracking-widest text-xs text-amber-200 mb-6">Support</h4>
+        <ul class="space-y-4">
+          <li><a class="text-neutral-500 hover:text-neutral-300 font-sans text-sm transition-colors duration-200"
+              href="#">Contact Us</a></li>
+          <li><a class="text-neutral-500 hover:text-neutral-300 font-sans text-sm transition-colors duration-200"
+              href="#">Shipping Policy</a></li>
+          <li><a class="text-neutral-500 hover:text-neutral-300 font-sans text-sm transition-colors duration-200"
+              href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-1">
+        <h4 class="font-label uppercase tracking-widest text-xs text-amber-200 mb-6">Newsletter</h4>
+        <div class="relative">
+          <input
+            class="w-full bg-neutral-950 border-none rounded-full px-6 py-4 text-sm text-on-surface focus:ring-1 focus:ring-amber-200/20 placeholder:text-neutral-600"
+            placeholder="Email Address" type="email" />
+          <button class="absolute right-2 top-2 p-2 text-amber-200">
+            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mt-20 pt-8 border-t border-white/5 px-12 max-w-7xl mx-auto flex flex-col md:row justify-between items-center gap-6">
+      <p class="text-neutral-500 text-xs font-label uppercase tracking-widest">© 2024 Gilded Crema Roastery. All rights
+        reserved.</p>
+      <div class="flex gap-8">
+        <a class="text-neutral-500 hover:text-amber-200 transition-colors" href="#">
+          <span class="material-symbols-outlined" data-icon="public">public</span>
+        </a>
+        <a class="text-neutral-500 hover:text-amber-200 transition-colors" href="#">
+          <span class="material-symbols-outlined" data-icon="share">share</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
